@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 public class CounterActivity extends Activity {
 
-	Counter counter;
+	CounterModel counter;
 	TextView counterNameTextView;
 	TextView currentCountTextView;
 	Button resetButton;
