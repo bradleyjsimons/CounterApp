@@ -1,19 +1,29 @@
 package com.example.counter;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.support.v4.app.NavUtils;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 public class AddNewCounterActivity extends Activity {
+    
+        CounterController counterController;
+        CounterModel counterModel;
+        EditText counterName;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_add_new_counter);
-		// Show the Up button in the action bar.
-		setupActionBar();
+	    super.onCreate(savedInstanceState);
+	    setContentView(R.layout.activity_add_new_counter);
+	    // Show the Up button in the action bar.
+	    setupActionBar();
+	    
+	    counterName =  (EditText)findViewById(R.id.counterNameEditText);
+	    counterController = new CounterController();
 	}
 
 	/**
@@ -47,6 +57,28 @@ public class AddNewCounterActivity extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	public void clickedCreateButton(View view) {
+	    CounterModel counterModel = new CounterModel();
+	    counterModel.setCounterName(counterName.getText().toString());
+	    counterController.addCounter(counterModel);
+	    
+	    CharSequence text = "Counter Saved!";
+	    int duration = Toast.LENGTH_SHORT;
+	    Toast toast = Toast.makeText(getApplicationContext(), text, duration);
+	    toast.show();
+	    
+	    this.finish();
+	}
+	
+	public void clickedCancelButton(View view) {
+	    CharSequence text = "Counter Not Saved!";
+	    int duration = Toast.LENGTH_SHORT;
+	    Toast toast = Toast.makeText(getApplicationContext(), text, duration);
+	    toast.show();
+	    
+	    this.finish();
 	}
 
 }

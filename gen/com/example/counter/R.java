@@ -26,7 +26,7 @@ public final class R {
     public static final class id {
         public static final int action_settings=0x7f08000b;
         public static final int addNewCounter=0x7f08000a;
-        public static final int button1=0x7f080003;
+        public static final int cancelButton=0x7f080003;
         public static final int counterName=0x7f080004;
         public static final int counterNameEditText=0x7f080000;
         public static final int counterNameTextView=0x7f080001;

@@ -21,7 +21,7 @@ public class CounterActivity extends Activity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+	    super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_counter);
 		// Show the Up button in the action bar.
 		setupActionBar();
@@ -31,8 +31,8 @@ public class CounterActivity extends Activity {
 		
 		counterNameTextView     = (TextView) findViewById(R.id.counterName);
 		currentCountTextView	= (TextView) findViewById(R.id.currentCount);
-		resetButton				= (Button)   findViewById(R.id.reset);
-		incrementButton   		= (Button)   findViewById(R.id.increment);
+		resetButton		= (Button)   findViewById(R.id.reset);
+		incrementButton   	= (Button)   findViewById(R.id.increment);
 		
 		currentCountTextView.setText(Integer.toString(currentCount));
 		counter.setCounterName(message);

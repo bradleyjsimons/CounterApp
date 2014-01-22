@@ -11,11 +11,11 @@ public class CounterListModel {
         counterList = new ArrayList<CounterModel>();
     }
     
-    public static ArrayList<CounterModel> getCounterList() {
+    public ArrayList<CounterModel> getCounterList() {
         return counterList;
     }
     
-    public static void setCounterList(ArrayList<CounterModel> counterList) {
+    public void setCounterList(ArrayList<CounterModel> counterList) {
         CounterListModel.counterList = counterList;
     }
 }

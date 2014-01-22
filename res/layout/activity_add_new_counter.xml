@@ -36,14 +36,15 @@
         android:id="@+id/createCounterButton"
         android:layout_width="wrap_content"
         android:layout_height="75sp"
-        android:layout_above="@+id/button1"
-        android:layout_alignLeft="@+id/button1"
+        android:layout_above="@+id/cancelButton"
+        android:layout_alignLeft="@+id/cancelButton"
         android:layout_alignRight="@+id/counterNameEditText"
         android:text="@string/create_counter"
-        android:textSize="25sp" />
+        android:textSize="25sp"
+        android:onClick="clickedCreateButton" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/cancelButton"
         android:layout_width="wrap_content"
         android:layout_height="75sp"
         android:layout_alignLeft="@+id/counterNameEditText"
@@ -51,6 +52,7 @@
         android:layout_alignRight="@+id/counterNameEditText"
         android:layout_marginBottom="25dp"
         android:text="@string/cancel_text"
-        android:textSize="25sp" />
+        android:textSize="25sp"
+        android:onClick="clickedCancelButton" />
 
 </RelativeLayout>

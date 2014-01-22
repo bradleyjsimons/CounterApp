@@ -31,6 +31,6 @@ public class CounterModel {
     }
 
     public int getCount() {
-		return count;
+	return count;
     }
 }
