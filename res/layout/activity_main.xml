@@ -14,35 +14,31 @@
         android:id="@+id/welcomeLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="@string/welcome_text"
-        android:textSize="28sp"
-        android:gravity="center" />
-
-    <Button
-        android:id="@+id/addNewCounter"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/welcomeLabel"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="43dp"
-        android:onClick="addNewCounter"
-        android:text="@string/add_counter" />
+        android:textSize="35sp" />
 
     <Button
         android:id="@+id/loadCounter"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="75sp"
         android:layout_alignLeft="@+id/addNewCounter"
-        android:layout_below="@+id/addNewCounter"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/addNewCounter"
+        android:layout_marginBottom="30dp"
         android:onClick="loadCounter"
-        android:text="@string/load_counter" />
+        android:text="@string/load_counter"
+        android:textSize="25sp" />
 
     <Button
-        android:id="@+id/showStats"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/loadCounter"
-        android:layout_below="@+id/loadCounter"
-        android:text="@string/show_stats" />
+        android:id="@+id/addNewCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="75sp"
+        android:layout_above="@+id/loadCounter"
+        android:layout_alignLeft="@+id/welcomeLabel"
+        android:layout_alignRight="@+id/welcomeLabel"
+        android:onClick="addNewCounter"
+        android:text="@string/add_counter"
+        android:textSize="25sp" />
         
 </RelativeLayout>

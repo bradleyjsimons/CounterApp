@@ -13,12 +13,13 @@
     <string name="add_counter">New Counter</string>
     <string name="load_counter">Load Counter</string>
     <string name="show_stats">Show Stats</string>
-    <string name="counter_name_text">Name Of Counter</string>
+    <string name="counter_name_text">name</string>
     <string name="title_activity_counter">My Message</string>
     <string name="title_activity_count">CountActivity</string>
     <string name="title_activity_add_new_counter">AddNewCounterActivity</string>
-    <string name="counter_name_activity_title">Give the Counter a Name</string>
-	<string name="create_counter">Create</string>
-	<string name="cancel_text">Cancel</string>
-	
+    <string name="counter_name_activity_title">Name the counter</string>
+    <string name="create_counter">Create</string>
+    <string name="cancel_text">Cancel</string>
+    <string name="title_activity_counter_list">CounterListActivity</string>
+
 </resources>
