@@ -27,6 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:gravity="center"
         android:text="@string/counter_name_activity_title"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="36sp" />

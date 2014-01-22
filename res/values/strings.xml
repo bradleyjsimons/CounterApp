@@ -17,7 +17,7 @@
     <string name="title_activity_counter">My Message</string>
     <string name="title_activity_count">CountActivity</string>
     <string name="title_activity_add_new_counter">AddNewCounterActivity</string>
-    <string name="counter_name_activity_title">Name the counter</string>
+    <string name="counter_name_activity_title">Name the Counter</string>
     <string name="create_counter">Create</string>
     <string name="cancel_text">Cancel</string>
     <string name="title_activity_counter_list">CounterListActivity</string>
