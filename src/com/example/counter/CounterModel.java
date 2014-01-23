@@ -1,16 +1,23 @@
 package com.example.counter;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 public class CounterModel {
 	
-    String 	counterName;
-    int		count;
+    String 	       counterName;
+    ArrayList<Date>    dateList;
+    int		       count;
 	
     CounterModel() {
 	count = 0;
+	dateList = new ArrayList<Date>();
     }
 	
     public void incrementCounter() {
 	count++;
+	Date dateOfIncrement = new Date();
+	dateList.add(dateOfIncrement);
     }
 	
     public void resetCounter() {

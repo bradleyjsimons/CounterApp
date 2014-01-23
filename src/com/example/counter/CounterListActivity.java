@@ -17,24 +17,21 @@ public class CounterListActivity extends Activity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_counter_list);
-		// Show the Up button in the action bar.
-		setupActionBar();
+	    super.onCreate(savedInstanceState);
+	    setContentView(R.layout.activity_counter_list);
+	    // Show the Up button in the action bar.
+	    setupActionBar();
 		
-		ListView listView = (ListView) findViewById(R.id.list_view);
-        counterController = new CounterController();
-        counters = counterController.getCounterArrayList();
-        
-        ArrayAdapter<CounterModel> adapter = new ArrayAdapter<CounterModel>(this,
+	    ListView listView = (ListView) findViewById(R.id.list_view);
+            counterController = new CounterController();
+            counters = counterController.getCounterArrayList();
+            
+            ArrayAdapter<CounterModel> adapter = new ArrayAdapter<CounterModel>(this,
                 android.R.layout.simple_list_item_1, counters);
     
-        listView.setAdapter(adapter);
+            listView.setAdapter(adapter);
         
 	}
-
-	
-	
 	
 	
 	/**

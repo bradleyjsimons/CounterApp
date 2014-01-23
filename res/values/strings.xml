@@ -11,7 +11,7 @@
     <string name="reset_text">Reset</string>
     <string name="welcome_text">Welcome To The Counter App</string>
     <string name="add_counter">New Counter</string>
-    <string name="load_counter">Load Counter</string>
+    <string name="load_counter">Load Counters</string>
     <string name="show_stats">Show Stats</string>
     <string name="counter_name_text">name</string>
     <string name="title_activity_counter">My Message</string>
