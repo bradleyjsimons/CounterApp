@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
@@ -30,7 +31,6 @@ public class CounterListActivity extends Activity {
                 android.R.layout.simple_list_item_1, counters);
     
             listView.setAdapter(adapter);
-        
 	}
 	
 	
@@ -38,7 +38,6 @@ public class CounterListActivity extends Activity {
 	 * Set up the {@link android.app.ActionBar}.
 	 */
 	private void setupActionBar() {
-
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 
 	}
