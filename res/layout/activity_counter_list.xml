@@ -10,7 +10,7 @@
     tools:context=".CounterListActivity" >
     
     <ListView
-        android:id="@android:id/list"
+        android:id="@+id/list_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
     </ListView>

@@ -49,7 +49,7 @@
         <activity
             android:name="com.example.counter.CounterListActivity"
             android:label="@string/title_activity_counter_list"
-            android:parentActivityName="android.app.ListActivity" >
+            android:parentActivityName="android.app.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="android.app.ListActivity" />

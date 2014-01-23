@@ -29,7 +29,7 @@ public class MainActivity extends Activity {
 	}
 	
 	public void loadCounter(View view) {
-	    Intent intent = new Intent(this, CounterActivity.class);
+	    Intent intent = new Intent(this, CounterListActivity.class);
 	    startActivity(intent);
 	}
 }

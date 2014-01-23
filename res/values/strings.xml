@@ -21,5 +21,6 @@
     <string name="create_counter">Create</string>
     <string name="cancel_text">Cancel</string>
     <string name="title_activity_counter_list">CounterListActivity</string>
+    <string name="list_item">List Item</string>
 
 </resources>

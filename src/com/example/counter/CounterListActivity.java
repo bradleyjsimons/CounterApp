@@ -1,21 +1,42 @@
 package com.example.counter;
 
-import android.os.Bundle;
+import java.util.ArrayList;
+
 import android.app.Activity;
+import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.support.v4.app.NavUtils;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 public class CounterListActivity extends Activity {
 
+	private CounterController counterController;
+	private ArrayList<CounterModel> counters;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_counter_list);
 		// Show the Up button in the action bar.
 		setupActionBar();
+		
+		ListView listView = (ListView) findViewById(R.id.list_view);
+        counterController = new CounterController();
+        counters = counterController.getCounterArrayList();
+        
+        ArrayAdapter<CounterModel> adapter = new ArrayAdapter<CounterModel>(this,
+                android.R.layout.simple_list_item_1, counters);
+    
+        listView.setAdapter(adapter);
+        
 	}
 
+	
+	
+	
+	
 	/**
 	 * Set up the {@link android.app.ActionBar}.
 	 */
