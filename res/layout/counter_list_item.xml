@@ -5,8 +5,18 @@
   
    <TextView
        android:id="@+id/txtLabel"
-       android:layout_width="fill_parent"
-       android:layout_height="wrap_content" 
+       android:layout_width="250dp"
+       android:layout_height="wrap_content"
+       android:layout_alignBottom="@+id/text_count"
        android:text="@string/list_item" />
+
+   <TextView
+       android:id="@+id/text_count"
+       android:layout_toRightOf="@+id/txtLabel"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:layout_alignParentTop="true"
+       android:layout_marginTop="0dp"
+       android:text="count" />
 
 </RelativeLayout>

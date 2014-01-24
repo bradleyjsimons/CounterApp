@@ -6,18 +6,21 @@ import java.util.Date;
 public class CounterModel {
 	
     String 	       counterName;
+    Date               dateCreated;
     ArrayList<Date>    dateList;
     int		       count;
 	
-    CounterModel() {
+    CounterModel(String name) {
+        counterName = name;
 	count = 0;
+	dateCreated = new Date();
 	dateList = new ArrayList<Date>();
     }
 	
     public void incrementCounter() {
 	count++;
-	Date dateOfIncrement = new Date();
-	dateList.add(dateOfIncrement);
+	Date timeStamp = new Date();
+	dateList.add(timeStamp);
     }
 	
     public void resetCounter() {

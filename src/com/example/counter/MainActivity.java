@@ -23,12 +23,7 @@ public class MainActivity extends Activity {
 	    return true;
 	}
 	
-	public void addNewCounter(View view) {
-	    Intent intent = new Intent(this, AddNewCounterActivity.class);
-	    startActivity(intent);
-	}
-	
-	public void loadCounter(View view) {
+	public void loadListViewActivity(View view) {
 	    Intent intent = new Intent(this, CounterListActivity.class);
 	    startActivity(intent);
 	}

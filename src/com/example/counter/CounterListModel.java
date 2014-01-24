@@ -18,4 +18,8 @@ public class CounterListModel {
     public void setCounterList(ArrayList<CounterModel> counterList) {
         CounterListModel.counterList = counterList;
     }
+    
+    public void addCounterToList(CounterModel counterModel) {
+        counterList.add(counterModel);
+    }
 }
