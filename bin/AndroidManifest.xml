@@ -22,9 +22,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.counter.CountActivity"
+            android:name="com.example.counter.CounterActivity"
             android:label="@string/title_activity_count"
-            android:parentActivityName="com.example.counter.MainActivity" >
+            android:parentActivityName="com.example.counter.CounterListActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.counter.MainActivity" />
@@ -32,14 +32,6 @@
         <activity
             android:name="com.example.counter.CounterModel"
             android:label="@string/title_activity_counter"
-            android:parentActivityName="com.example.counter.MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.counter.MainActivity" />
-        </activity>
-        <activity
-            android:name="com.example.counter.AddNewCounterActivity"
-            android:label="@string/title_activity_add_new_counter"
             android:parentActivityName="com.example.counter.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

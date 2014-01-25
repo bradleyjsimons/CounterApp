@@ -6,27 +6,30 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
 public class CounterListActivity extends Activity {
 
-    private static final String FILENAME = "file.json";
+	public final static String EXTRA_MESSAGE = "CounterModel_Object";
+	private static final String FILENAME = "file.json";
     private CounterListModel counterListModel;
-    private ArrayList<CounterModel> counterList;
     private ArrayAdapter<CounterModel> adapter;
     private ListView oldCounters;
     private EditText counterNameText;
@@ -35,16 +38,24 @@ public class CounterListActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_counter_list);
-        // Show the Up button in the action bar.
         setupActionBar();
 
-        oldCounters = (ListView) findViewById(R.id.counters_list_view);
-        counterNameText = (EditText) findViewById(R.id.add_counter_edit_text);
-        Button addButton = (Button) findViewById(R.id.add_button);
+        oldCounters       = (ListView) findViewById(R.id.counters_list_view);
+        counterNameText   = (EditText) findViewById(R.id.add_counter_edit_text);
+        Button addButton  = (Button) findViewById(R.id.add_button);
+        counterListModel  = new CounterListModel();
 
-        counterListModel = new CounterListModel();
-        counterList = counterListModel.getCounterList();
-
+        oldCounters.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position,
+                    long id) {
+            	CounterModel counterModel = (CounterModel) parent.getAdapter().getItem(position);
+                Intent intent = new Intent(CounterListActivity.this, CounterActivity.class);
+                intent.putExtra(EXTRA_MESSAGE, counterModel);
+                startActivity(intent);
+            }
+        });
+        
         addButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 setResult(RESULT_OK);
@@ -53,9 +64,8 @@ public class CounterListActivity extends Activity {
                 adapter.notifyDataSetChanged();
             }
         });
-        adapter = new ArrayAdapter<CounterModel>(this,
-                android.R.layout.simple_list_item_1, counterList);
-
+        
+        adapter = new ArrayAdapter<CounterModel>(this, android.R.layout.simple_list_item_1, counterListModel.getCounterList());
         oldCounters.setAdapter(adapter);
     }
 
@@ -63,9 +73,9 @@ public class CounterListActivity extends Activity {
     protected void onStart() {
         // TODO Auto-generated method stub
         super.onStart();
-        counterList = loadFromFile();
+        this.loadFromFile();
         adapter = new ArrayAdapter<CounterModel>(this,
-                android.R.layout.simple_list_item_1, counterList);
+                android.R.layout.simple_list_item_1, counterListModel.getCounterList());
         oldCounters.setAdapter(adapter);
     }
 
@@ -101,8 +111,7 @@ public class CounterListActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    private ArrayList<CounterModel> loadFromFile() {
-        ArrayList<CounterModel> counters = new ArrayList<CounterModel>();
+    private void loadFromFile() {
         try {
             FileInputStream fis = openFileInput(FILENAME);
             BufferedReader in = new BufferedReader(new InputStreamReader(fis));
@@ -110,9 +119,10 @@ public class CounterListActivity extends Activity {
             Gson gson = new Gson();
             while (line != null) {
                 CounterModel counterModel = gson.fromJson(line, CounterModel.class);
-                counters.add(counterModel);
+                counterListModel.addCounterToList(counterModel);
                 line = in.readLine();
             }          
+            fis.close();
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -120,12 +130,11 @@ public class CounterListActivity extends Activity {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        return counters;
     }
 
     private void saveInFile(CounterModel counterModel) {
         try {
-            counterList.add(counterModel);
+            counterListModel.addCounterToList(counterModel);
             Gson gson = new Gson();
             String json = gson.toJson(counterModel) +'\n';
             FileOutputStream fos = openFileOutput(FILENAME,

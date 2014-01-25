@@ -1,14 +1,16 @@
 package com.example.counter;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class CounterModel {
+public class CounterModel implements Serializable {
 	
-    String 	       counterName;
-    Date               dateCreated;
-    ArrayList<Date>    dateList;
-    int		       count;
+	private static final long serialVersionUID = 1L;
+	String 	       		counterName;
+    Date             	dateCreated;
+    ArrayList<Date>    	dateList;
+    int		       	   	count;
 	
     CounterModel(String name) {
         counterName = name;

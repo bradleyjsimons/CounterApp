@@ -12,4 +12,5 @@ public class CounterListArrayAdapter extends ArrayAdapter<CounterModel> {
             int textViewResourceId, ArrayList<CounterModel> objects) {
         super(context, resource, textViewResourceId, objects);
     }
+
 }
