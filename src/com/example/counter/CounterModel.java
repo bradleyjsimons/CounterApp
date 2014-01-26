@@ -64,6 +64,6 @@ public class CounterModel implements Serializable {
 
 	@Override
 	public String toString() {
-		return this.counterName;
+		return this.getCounterName() + " - " + Integer.toString(this.getCount());
 	}
 }

@@ -22,5 +22,6 @@
     <string name="title_activity_counter_list">CounterListActivity</string>
     <string name="list_item">List Item</string>
     <string name="intro_text">Keep track of your life!</string>
+    <string name="list_count">count</string>
 
 </resources>

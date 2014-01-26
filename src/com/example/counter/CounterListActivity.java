@@ -23,7 +23,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -36,7 +35,7 @@ public class CounterListActivity extends Activity {
     public final static String EXTRA_MESSAGE = "CounterModelObject";
     private static final String FILENAME = "file.json";
     private CounterListModel counterListModel;
-    private ArrayAdapter<CounterModel> adapter;
+    private CounterListArrayAdapter adapter;
     private ListView lv;
     private EditText counterNameText;
 
@@ -50,6 +49,7 @@ public class CounterListActivity extends Activity {
         counterNameText = (EditText) findViewById(R.id.add_counter_edit_text);
         Button addButton = (Button) findViewById(R.id.add_button);
         counterListModel = new CounterListModel();
+        final Activity activity = this;
 
         registerForContextMenu(lv);
 
@@ -85,13 +85,14 @@ public class CounterListActivity extends Activity {
                 }
 
                 saveInFile(counterModel);
-                adapter.notifyDataSetChanged();
+                adapter = new CounterListArrayAdapter(activity, R.id.counters_list_view, counterListModel.getCounterList());
+                lv.setAdapter(adapter);
 
                 Toast.makeText(context, "New Counter Created!", duration).show();
             }
         });
 
-        adapter = new ArrayAdapter<CounterModel>(this, android.R.layout.simple_list_item_1, counterListModel.getCounterList());
+        adapter = new CounterListArrayAdapter(this, R.id.counters_list_view, counterListModel.getCounterList());
         lv.setAdapter(adapter);
     }
 
@@ -131,8 +132,7 @@ public class CounterListActivity extends Activity {
         // TODO Auto-generated method stub
         super.onStart();
         this.loadFromFile();
-        adapter = new ArrayAdapter<CounterModel>(this,
-                android.R.layout.simple_list_item_1, counterListModel.getCounterList());
+        adapter = new CounterListArrayAdapter(this, R.id.counters_list_view, counterListModel.getCounterList());
         lv.setAdapter(adapter);
     }
 
@@ -173,7 +173,6 @@ public class CounterListActivity extends Activity {
         while (line != null) {
             CounterModel counterModel = gson.fromJson(line, CounterModel.class);
             counterListModel.addCounterToList(counterModel);
-            Log.e("loaded the value", Integer.toString(counterModel.getCount()));
             line = in.readLine();
         }          
         fis.close();
@@ -213,15 +212,16 @@ public class CounterListActivity extends Activity {
             }
         }
         counterListModel.setCounterList(newCounterList);
-        adapter = new ArrayAdapter<CounterModel>(this,
-                android.R.layout.simple_list_item_1, counterListModel.getCounterList());
+        adapter = new CounterListArrayAdapter(this, R.id.counters_list_view, counterListModel.getCounterList());
         lv.setAdapter(adapter);
         this.saveChangedArrayToFile();
     }
 
     private void resetCounter(CounterModel counterModel) {
         counterModel.resetCounter();
-        adapter.notifyDataSetChanged();
+        adapter = new CounterListArrayAdapter(this, R.id.counters_list_view, counterListModel.getCounterList());
+        lv.setAdapter(adapter);
+        //adapter.notifyDataSetChanged();
         saveChangedArrayToFile();
     }
     
@@ -235,7 +235,6 @@ public class CounterListActivity extends Activity {
                         Context.MODE_APPEND);
                 fos.write(json.getBytes());
                 fos.close();
-                Log.e("saving the value",Integer.toString(obj.getCount()));
             } catch (FileNotFoundException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
