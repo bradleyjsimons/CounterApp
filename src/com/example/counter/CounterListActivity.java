@@ -95,8 +95,6 @@ public class CounterListActivity extends Activity {
         lv.setAdapter(adapter);
     }
 
-
-
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v,
             ContextMenuInfo menuInfo) {
@@ -105,7 +103,8 @@ public class CounterListActivity extends Activity {
         super.onCreateContextMenu(menu, v, menuInfo);
 
         menu.add("Delete");
-        menu.add("Rename");   
+        menu.add("Rename");  
+        menu.add("Reset");
     }
 
     @Override
@@ -117,17 +116,15 @@ public class CounterListActivity extends Activity {
         CounterModel selectedCounter = adapter.getItem(info.position);
 
         if (item.getTitle().equals("Delete")) {
-            deleteCounterModel(selectedCounter);
+            this.deleteCounterModel(selectedCounter);
         }
 
-        if (item.getTitle().equals("Rename")) {
-            Log.e("trying to rename", "this item");
+        if (item.getTitle().equals("Reset")) {
+            this.resetCounter(selectedCounter);
         }
 
         return true;
     }
-
-
 
     @Override
     protected void onStart() {
@@ -139,12 +136,8 @@ public class CounterListActivity extends Activity {
         lv.setAdapter(adapter);
     }
 
-    /**
-     * Set up the {@link android.app.ActionBar}.
-     */
     private void setupActionBar() {
         getActionBar().setDisplayHomeAsUpEnabled(true);
-
     }
 
     @Override
@@ -214,7 +207,6 @@ public class CounterListActivity extends Activity {
 
     private void deleteCounterModel(CounterModel counterToBeDeleted) {
         ArrayList<CounterModel> newCounterList = new ArrayList<CounterModel>();
-        Log.e("size of list", Integer.toString(counterListModel.getCounterList().size()));
         for (CounterModel obj : counterListModel.getCounterList()) {
             if (!(obj.getCounterName().equals(counterToBeDeleted.getCounterName()))) {
                 newCounterList.add(obj);
@@ -227,6 +219,12 @@ public class CounterListActivity extends Activity {
         this.saveChangedArrayToFile();
     }
 
+    private void resetCounter(CounterModel counterModel) {
+        counterModel.resetCounter();
+        adapter.notifyDataSetChanged();
+        saveChangedArrayToFile();
+    }
+    
     private void saveChangedArrayToFile() {
         this.deleteContentsOfFile();
         for (CounterModel obj : counterListModel.getCounterList()) {
