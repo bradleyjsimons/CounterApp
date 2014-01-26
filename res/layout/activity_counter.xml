@@ -13,7 +13,6 @@
         android:layout_width="fill_parent"
         android:layout_height="60dp"
         android:gravity="center"
-        android:hint="@string/counter_name"
         android:textSize="40sp" />
 
     <TextView
@@ -22,7 +21,6 @@
         android:layout_height="90dp"
         android:layout_below="@id/counterName"
         android:gravity="center"
-        android:hint="@string/count_text"
         android:textSize="40sp" />
 
     <Button
@@ -33,15 +31,13 @@
         android:text="@string/reset_text"
         android:layout_below="@id/currentCount"
         android:onClick="resetCount"  />
-    
+    <!--  
 	<Button
         android:id="@+id/increment"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:layout_below="@id/reset"
-        android:text="@string/button_text"
-        android:textSize="60sp"
-        android:onClick="incrementCount" />
-	
+        android:text="@string/add_button_text" />
+     -->   
 </RelativeLayout>
 	

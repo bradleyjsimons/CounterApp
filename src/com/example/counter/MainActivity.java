@@ -7,8 +7,6 @@ import android.view.Menu;
 import android.view.View;
 
 public class MainActivity extends Activity {
-
-	public final static String EXTRA_MESSAGE = "com.example.counter.MESSAGE";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
