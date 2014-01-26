@@ -4,17 +4,19 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -22,12 +24,10 @@ import com.google.gson.Gson;
 public class CounterActivity extends Activity {
 
 	private static final String FILENAME = "file.json";
-	CounterModel counterModel;
-	CounterListModel counterListModel;
-	TextView counterNameTextView;
-	TextView currentCountTextView;
-	Button resetButton;
-	Button incrementButton;
+	private CounterModel counterModel;
+	private CounterListModel counterListModel;
+	private TextView counterNameTextView;
+	private TextView currentCountTextView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,17 +36,27 @@ public class CounterActivity extends Activity {
 		setupActionBar();
 
 		Intent intent = getIntent();
-		counterModel = (CounterModel) intent.getSerializableExtra("CounterModel_Object");
+		counterModel = (CounterModel) intent.getSerializableExtra(CounterListActivity.EXTRA_MESSAGE);
+
+		counterNameTextView = (TextView) findViewById(R.id.counterName);
+		currentCountTextView = (TextView) findViewById(R.id.currentCount);
 
 		counterListModel = new CounterListModel();
-		counterNameTextView     = (TextView) findViewById(R.id.counterName);
-		currentCountTextView	= (TextView) findViewById(R.id.currentCount);
-		resetButton				= (Button)   findViewById(R.id.reset);
-		incrementButton   		= (Button)   findViewById(R.id.increment);
 
-		currentCountTextView.setText(Integer.toString(counterModel.getCount()));
 		counterNameTextView.setText(counterModel.getCounterName());
+	}
+
+	@Override
+	protected void onStart() {
+		// TODO Auto-generated method stub
+		super.onStart();
 		this.loadFromFile();
+	}
+
+	@Override
+	public void onStop() {
+		super.onStop(); 
+		saveInFile();
 	}
 
 	public void incrementCount(View view) {
@@ -87,12 +97,6 @@ public class CounterActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 
-	@Override
-	public void onStop() {
-		super.onStop();
-		saveInFile ();
-	}
-
 	private void loadFromFile() {
 		try {
 			FileInputStream fis = openFileInput(FILENAME);
@@ -101,13 +105,15 @@ public class CounterActivity extends Activity {
 			Gson gson = new Gson();
 			while (line != null) {
 				CounterModel counter = gson.fromJson(line, CounterModel.class);
-				if (counter.getCounterName() == counterModel.getCounterName()) {
+				if (counterModel.getCounterName().equals(counter.getCounterName())) {
 					counterListModel.addCounterToList(counterModel);
+					currentCountTextView.setText(Integer.toString(counterModel.getCount()));
 				} else {
 					counterListModel.addCounterToList(counter);
 				}
 				line = in.readLine();
 			}          
+			fis.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -118,23 +124,34 @@ public class CounterActivity extends Activity {
 	}
 
 	private void saveInFile() {
-		//try {
-			File f = new File("file.json");
-			f.delete();
-			/*for (CounterModel obj : counterListModel.getCounterList()) {
+		this.deleteContentsOfFile();
+		for (CounterModel obj : counterListModel.getCounterList()) {
+			try {
 				Gson gson = new Gson();
+				if (obj.getCounterName().equals(counterModel.getCounterName())) {
+					obj = counterModel;
+				}
 				String json = gson.toJson(obj) +'\n';
 				FileOutputStream fos = openFileOutput(FILENAME,
 						Context.MODE_APPEND);
 				fos.write(json.getBytes());
 				fos.close();
+				Log.e("hi",Integer.toString(obj.getCount()));
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
+		}
 	}
+
+	private void deleteContentsOfFile() {
+		File dir = getFilesDir();
+		File file = new File(dir, FILENAME);
+		boolean deleted = file.delete();
+		Log.e("hi", Boolean.toString(deleted));
+	}
+
 }

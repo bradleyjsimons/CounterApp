@@ -27,8 +27,8 @@ import com.google.gson.Gson;
 
 public class CounterListActivity extends Activity {
 
-	public final static String EXTRA_MESSAGE = "CounterModel_Object";
-	private static final String FILENAME = "file.json";
+    public final static String EXTRA_MESSAGE = "CounterModelObject";
+    private static final String FILENAME = "file.json";
     private CounterListModel counterListModel;
     private ArrayAdapter<CounterModel> adapter;
     private ListView oldCounters;
@@ -50,6 +50,7 @@ public class CounterListActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position,
                     long id) {
             	CounterModel counterModel = (CounterModel) parent.getAdapter().getItem(position);
+            	//String counterName = counterModel.getCounterName();
                 Intent intent = new Intent(CounterListActivity.this, CounterActivity.class);
                 intent.putExtra(EXTRA_MESSAGE, counterModel);
                 startActivity(intent);
@@ -62,6 +63,13 @@ public class CounterListActivity extends Activity {
                 CounterModel counterModel = new CounterModel(counterNameText.getText().toString());
                 saveInFile(counterModel);
                 adapter.notifyDataSetChanged();
+                
+                Context context = getApplicationContext();
+                CharSequence text = "New Counter Saved!";
+                int duration = Toast.LENGTH_SHORT;
+
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
             }
         });
         
@@ -111,7 +119,7 @@ public class CounterListActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void loadFromFile() {
+    private void loadFromFile() {;
         try {
             FileInputStream fis = openFileInput(FILENAME);
             BufferedReader in = new BufferedReader(new InputStreamReader(fis));
@@ -148,6 +156,5 @@ public class CounterListActivity extends Activity {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
     }
 }
