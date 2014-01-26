@@ -52,11 +52,11 @@ public class CounterActivity extends Activity {
 		super.onStart();
 		this.loadFromFile();
 	}
-
+	
 	@Override
-	public void onStop() {
-		super.onStop(); 
-		saveInFile();
+	protected void onPause() {
+	    super.onPause();
+	    this.saveInFile();
 	}
 
 	public void incrementCount(View view) {
@@ -136,7 +136,7 @@ public class CounterActivity extends Activity {
 						Context.MODE_APPEND);
 				fos.write(json.getBytes());
 				fos.close();
-				Log.e("hi",Integer.toString(obj.getCount()));
+				Log.e("saving the value",Integer.toString(obj.getCount()));
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -151,7 +151,7 @@ public class CounterActivity extends Activity {
 		File dir = getFilesDir();
 		File file = new File(dir, FILENAME);
 		boolean deleted = file.delete();
-		Log.e("hi", Boolean.toString(deleted));
+		Log.e("file deleted?", Boolean.toString(deleted));
 	}
 
 }

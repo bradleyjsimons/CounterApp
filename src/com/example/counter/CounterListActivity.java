@@ -12,6 +12,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -128,6 +129,7 @@ public class CounterListActivity extends Activity {
             while (line != null) {
                 CounterModel counterModel = gson.fromJson(line, CounterModel.class);
                 counterListModel.addCounterToList(counterModel);
+                Log.e("loaded the value", Integer.toString(counterModel.getCount()));
                 line = in.readLine();
             }          
             fis.close();
@@ -141,6 +143,7 @@ public class CounterListActivity extends Activity {
     }
 
     private void saveInFile(CounterModel counterModel) {
+        Log.e("size of counter list",Integer.toString(counterListModel.getCounterList().size()));
         try {
             counterListModel.addCounterToList(counterModel);
             Gson gson = new Gson();
