@@ -1,11 +1,9 @@
 package com.example.counter;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
-public class CounterListModel implements Serializable {
-        
-	private static final long serialVersionUID = 1L;
+public class CounterListModel {
+;
 	private static ArrayList<CounterModel> counterList;
 
     public CounterListModel() {
