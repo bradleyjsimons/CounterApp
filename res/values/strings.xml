@@ -23,5 +23,6 @@
     <string name="list_item">List Item</string>
     <string name="intro_text">Keep track of your life!</string>
     <string name="list_count">count</string>
+    <string name="counter_list_header_text">Tap a counter to load. Tap and hold to see more options</string>
 
 </resources>

@@ -73,13 +73,13 @@ public class CounterListActivity extends Activity {
                 int duration = Toast.LENGTH_SHORT;
 
                 if (counterModel.getCounterName().length() >= 40 || counterModel.getCounterName().length() <= 0) {
-                    Toast.makeText(context, "Name must be between 0 and 40 characters!", duration).show();
+                    Toast.makeText(context, "The Counter's name must be between 0 and 40 characters!", duration).show();
                     return;
                 }
 
                 for (CounterModel obj : counterListModel.getCounterList()) {
                     if (obj.getCounterName().equals(counterModel.getCounterName())) {
-                        Toast.makeText(context, "Counter Already Exists!", duration).show();
+                        Toast.makeText(context, "Counter Already Exists, duplicates not allowed!", duration).show();
                         return;
                     }
                 }
@@ -103,9 +103,11 @@ public class CounterListActivity extends Activity {
         // TODO Auto-generated method stub
         super.onCreateContextMenu(menu, v, menuInfo);
 
-        menu.add("Delete");
-        menu.add("Rename");  
+        menu.setHeaderTitle("Select an option");
         menu.add("Reset");
+        menu.add("Rename");  
+        menu.add("Delete");
+        menu.add("Cancel");
     }
 
     @Override
@@ -116,11 +118,16 @@ public class CounterListActivity extends Activity {
         AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
         CounterModel selectedCounter = adapter.getItem(info.position);
 
+        Context context = getApplicationContext();
+        int duration = Toast.LENGTH_SHORT;
+        
         if (item.getTitle().equals("Delete")) {
+            Toast.makeText(context, "Counter Deleted!", duration).show();
             this.deleteCounterModel(selectedCounter);
         }
 
         if (item.getTitle().equals("Reset")) {
+            Toast.makeText(context, "Counter Reset!", duration).show();
             this.resetCounter(selectedCounter);
         }
 

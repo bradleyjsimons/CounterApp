@@ -35,6 +35,7 @@ public final class R {
         public static final int counterName=0x7f080004;
         public static final int counterNameEditText=0x7f080000;
         public static final int counterNameTextView=0x7f080001;
+        public static final int counter_list_header=0x7f08000c;
         public static final int counters_list_view=0x7f08000a;
         public static final int createCounterButton=0x7f080002;
         public static final int currentCount=0x7f080005;
@@ -44,7 +45,6 @@ public final class R {
         public static final int loadCounter=0x7f08000e;
         public static final int name_text=0x7f080011;
         public static final int reset=0x7f080006;
-        public static final int textView1=0x7f08000c;
         public static final int welcomeLabel=0x7f08000d;
     }
     public static final class layout {
@@ -69,6 +69,7 @@ public final class R {
         public static final int button_text=0x7f050003;
         public static final int cancel_text=0x7f050011;
         public static final int count_text=0x7f050005;
+        public static final int counter_list_header_text=0x7f050016;
         public static final int counter_name=0x7f050004;
         public static final int counter_name_activity_title=0x7f05000f;
         public static final int counter_name_text=0x7f05000b;
