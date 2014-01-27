@@ -7,11 +7,11 @@ import java.util.Date;
 
 public class CounterModel implements Serializable, Comparator<CounterModel> {
 
-    private static final long 	serialVersionUID = 1L;
-    private String 	       		counterName;
-    private Date             	dateCreated;
-    private ArrayList<Date>    	dateList;
-    int		       	   			count;
+    private static final long serialVersionUID = 1L;
+    private String counterName;
+    private Date dateCreated;
+    private ArrayList<Date> dateList;
+    int	count;
 
     CounterModel(String name) {
         counterName = name;

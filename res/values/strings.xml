@@ -21,5 +21,10 @@
     <string name="hello_world">Hello world!</string>
     <string name="rename_text">enter new name for counter</string>
     <string name="submit_new_name">Submit</string>
+    <string name="title_activity_stats">StatsActivity</string>
+    <string name="counts_per_hour_title">Per Hour</string>
+    <string name="counts_per_day_title">Per Day</string>
+    <string name="counts_per_week_title">Per Week</string>
+    <string name="counts_per_month_title">Per Month</string>
 
 </resources>

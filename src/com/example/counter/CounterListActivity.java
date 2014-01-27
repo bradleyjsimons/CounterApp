@@ -78,7 +78,6 @@ public class CounterListActivity extends Activity {
                     counterNameText.setText("");
                     return;
                 }
-
                 for (CounterModel obj : counterListModel.getCounterList()) {
                     if (obj.getCounterName().equals(counterModel.getCounterName())) {
                         Toast.makeText(context, "Counter Already Exists, duplicates not allowed!", duration).show();
@@ -86,7 +85,6 @@ public class CounterListActivity extends Activity {
                         return;
                     }
                 }
-
                 saveInFile(counterModel);
                 adapter = new CounterListArrayAdapter(activity, R.id.counters_list_view, counterListModel.getCounterList());
                 lv.setAdapter(adapter);
@@ -95,7 +93,6 @@ public class CounterListActivity extends Activity {
                 counterNameText.setText("");
             }
         });
-
         adapter = new CounterListArrayAdapter(this, R.id.counters_list_view, counterListModel.getCounterList());
         lv.setAdapter(adapter);
     }
@@ -111,7 +108,8 @@ public class CounterListActivity extends Activity {
         menu.add("Reset");
         menu.add("Rename");  
         menu.add("Delete");
-        menu.add("Sort");
+        menu.add("Stats");
+        menu.add("Sort (All Counters)");
         menu.add("Cancel");
     }
 
@@ -142,10 +140,17 @@ public class CounterListActivity extends Activity {
             startActivity(intent);
         }
 
-        if (item.getTitle().equals("Sort")) {
+        if (item.getTitle().equals("Sort (All Counters)")) {
             counterListModel.sortCounterList();
             adapter = new CounterListArrayAdapter(this, R.id.counters_list_view, counterListModel.getCounterList());
             lv.setAdapter(adapter);
+            this.saveChangedArrayToFile();
+        }
+        
+        if (item.getTitle().equals("Stats")) {
+            Intent intent = new Intent(CounterListActivity.this, StatsActivity.class);
+            intent.putExtra(EXTRA_MESSAGE, selectedCounter);
+            startActivity(intent);
         }
         
         return true;
