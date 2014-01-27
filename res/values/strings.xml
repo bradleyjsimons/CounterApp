@@ -16,5 +16,10 @@
     <string name="counter_list_header_text">Tap a counter to load. Tap and hold to see more options</string>
     <string name="add_button_text">+</string>
     <string name="add_new_counter_text">Add New Counter Here:</string>
-    
+    <string name="title_activity_count">activity counter</string>
+    <string name="title_activity_rename_counter">RenameCounterActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="rename_text">enter new name for counter</string>
+    <string name="submit_new_name">Submit</string>
+
 </resources>

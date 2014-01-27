@@ -67,19 +67,22 @@ public class CounterListActivity extends Activity {
         addButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 setResult(RESULT_OK);
-                CounterModel counterModel = new CounterModel(counterNameText.getText().toString());
+                String counterName = counterNameText.getText().toString();
+                CounterModel counterModel = new CounterModel(counterName);
 
                 Context context = getApplicationContext();
                 int duration = Toast.LENGTH_SHORT;
 
-                if (counterModel.getCounterName().length() >= 40 || counterModel.getCounterName().length() <= 0) {
+                if (counterName.length() >= 40 || counterName.length() <= 0) {
                     Toast.makeText(context, "The Counter's name must be between 0 and 40 characters!", duration).show();
+                    counterNameText.setText("");
                     return;
                 }
 
                 for (CounterModel obj : counterListModel.getCounterList()) {
                     if (obj.getCounterName().equals(counterModel.getCounterName())) {
                         Toast.makeText(context, "Counter Already Exists, duplicates not allowed!", duration).show();
+                        counterNameText.setText("");
                         return;
                     }
                 }
@@ -89,6 +92,7 @@ public class CounterListActivity extends Activity {
                 lv.setAdapter(adapter);
 
                 Toast.makeText(context, "New Counter Created!", duration).show();
+                counterNameText.setText("");
             }
         });
 
@@ -107,6 +111,7 @@ public class CounterListActivity extends Activity {
         menu.add("Reset");
         menu.add("Rename");  
         menu.add("Delete");
+        menu.add("Sort");
         menu.add("Cancel");
     }
 
@@ -120,7 +125,7 @@ public class CounterListActivity extends Activity {
 
         Context context = getApplicationContext();
         int duration = Toast.LENGTH_SHORT;
-        
+
         if (item.getTitle().equals("Delete")) {
             Toast.makeText(context, "Counter Deleted!", duration).show();
             this.deleteCounterModel(selectedCounter);
@@ -131,6 +136,18 @@ public class CounterListActivity extends Activity {
             this.resetCounter(selectedCounter);
         }
 
+        if (item.getTitle().equals("Rename")) {
+            Intent intent = new Intent(CounterListActivity.this, RenameCounterActivity.class);
+            intent.putExtra(EXTRA_MESSAGE, selectedCounter);
+            startActivity(intent);
+        }
+
+        if (item.getTitle().equals("Sort")) {
+            counterListModel.sortCounterList();
+            adapter = new CounterListArrayAdapter(this, R.id.counters_list_view, counterListModel.getCounterList());
+            lv.setAdapter(adapter);
+        }
+        
         return true;
     }
 
@@ -138,6 +155,7 @@ public class CounterListActivity extends Activity {
     protected void onStart() {
         // TODO Auto-generated method stub
         super.onStart();
+        counterListModel = new CounterListModel();
         this.loadFromFile();
         adapter = new CounterListArrayAdapter(this, R.id.counters_list_view, counterListModel.getCounterList());
         lv.setAdapter(adapter);
@@ -231,7 +249,7 @@ public class CounterListActivity extends Activity {
         //adapter.notifyDataSetChanged();
         saveChangedArrayToFile();
     }
-    
+
     private void saveChangedArrayToFile() {
         this.deleteContentsOfFile();
         for (CounterModel obj : counterListModel.getCounterList()) {

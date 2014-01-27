@@ -18,6 +18,7 @@
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -30,17 +31,17 @@
                 android:value="com.example.counter.MainActivity" />
         </activity>
         <activity
-            android:name="com.example.counter.CounterModel"
-            android:label="@string/title_activity_counter"
-            android:parentActivityName="com.example.counter.MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.counter.MainActivity" />
-        </activity>
-        <activity
             android:name="com.example.counter.CounterListActivity"
             android:label="@string/title_activity_counter_list"
             android:parentActivityName="com.example.counter.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="android.app.ListActivity" />
+        </activity>
+        <activity
+            android:name="com.example.counter.RenameCounterActivity"
+            android:label="@string/title_activity_rename_counter" 
+            android:parentActivityName="com.example.counter.CounterListActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="android.app.ListActivity" />
