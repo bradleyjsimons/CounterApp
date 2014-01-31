@@ -1,18 +1,21 @@
 package com.example.counter;
 
+import java.util.ArrayList;
+
 import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.TextView;
+import android.widget.ListView;
 
 public class StatsActivity extends FragmentActivity implements
         ActionBar.OnNavigationListener {
@@ -22,6 +25,7 @@ public class StatsActivity extends FragmentActivity implements
      * current dropdown position.
      */
     private static final String STATE_SELECTED_NAVIGATION_ITEM = "selected_navigation_item";
+    private static final String COUNTER_KEY = "counter_key";
     private CounterModel counterModel;
     
     @Override
@@ -99,32 +103,49 @@ public class StatsActivity extends FragmentActivity implements
     public boolean onNavigationItemSelected(int position, long id) {
         // When the given dropdown item is selected, show its contents in the
         // container view.
-        Fragment fragment = new DummySectionFragment();
+        Fragment fragment = new StatsFragment();
         Bundle args = new Bundle();
-        args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, position + 1);
+        args.putSerializable(COUNTER_KEY, counterModel);
+        args.putInt(StatsFragment.ARG_SECTION_NUMBER, position + 1);
         fragment.setArguments(args);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, fragment).commit();
         return true;
     }
 
-    public static class DummySectionFragment extends Fragment {
+    public static class StatsFragment extends Fragment {
         
         public static final String ARG_SECTION_NUMBER = "section_number";
-
-        public DummySectionFragment() {
-            
+        
+        public StatsFragment() {
         }
-
+       
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_stats_dummy,
+            View rootView = inflater.inflate(R.layout.fragment_stats,
                     container, false);
-            TextView dummyTextView = (TextView) rootView
-                    .findViewById(R.id.section_label);
-            dummyTextView.setText(Integer.toString(getArguments().getInt(
-                    ARG_SECTION_NUMBER)));
+            ListView lv = (ListView) rootView.findViewById(R.id.listView);
+            CounterModel fragCounterModel = (CounterModel) getArguments().getSerializable(COUNTER_KEY);
+            int sectionNum = getArguments().getInt(ARG_SECTION_NUMBER);
+            
+            ArrayList<String> dateList;
+            if (sectionNum == 1) {
+            	dateList = fragCounterModel.getStatsModel().getHourStrings();
+            }
+            else if (sectionNum == 2) {
+            	Log.e("in the section", "1");
+            	dateList = fragCounterModel.getStatsModel().getDayStrings();
+            }
+            else if (sectionNum == 3) {
+            	dateList = fragCounterModel.getStatsModel().getWeekStrings();
+            } 
+            else {
+            	dateList = fragCounterModel.getStatsModel().getMonthStrings();
+            }
+
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, dateList);
+            lv.setAdapter(adapter);
             return rootView;
         }
     }
