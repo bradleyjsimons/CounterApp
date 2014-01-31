@@ -120,7 +120,7 @@ public class CounterListActivity extends Activity {
 				saveInFile(counterModel);
 				adapter = new CounterListArrayAdapter(activity, R.id.counters_list_view, counterListModel.getCounterList());
 				lv.setAdapter(adapter);
-
+				
 				Toast.makeText(context, "New Counter Created!", duration).show();
 				counterNameText.setText("");
 			}
@@ -317,7 +317,6 @@ public class CounterListActivity extends Activity {
 		counterModel.resetCounter();
 		adapter = new CounterListArrayAdapter(this, R.id.counters_list_view, counterListModel.getCounterList());
 		lv.setAdapter(adapter);
-		//adapter.notifyDataSetChanged();
 		saveChangedArrayToFile();
 	}
 
