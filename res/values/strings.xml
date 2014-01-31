@@ -11,7 +11,7 @@
     <string name="cancel_text">Cancel</string>
     <string name="title_activity_counter_list">Select/Add a Counter</string>
     <string name="list_item">List Item</string>
-    <string name="intro_text">The App You Can Count On It</string>
+    <string name="intro_text">The App You Can Count On</string>
     <string name="list_count">count</string>
     <string name="counter_list_header_text">Tap a counter to load. Tap and hold to see more options</string>
     <string name="add_button_text">+</string>

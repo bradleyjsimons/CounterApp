@@ -1,5 +1,5 @@
 /**
- * This simple class is used to hold all the counterModel objects
+--  * This simple class is used to hold all the counterModel objects
  * currently active in the app. It does this by implementing an
  * ArrayList of CounterModel objects. It also provides sorting
  * methods, as well as adding and deleting counter objects.
