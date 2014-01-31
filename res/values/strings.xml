@@ -1,34 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Counter</string>
+    <string name="app_name">simons.DigiCount</string>
     <string name="action_settings">Settings</string>
     <string name="reset_text">Reset</string>
-    <string name="welcome_text">DigiCount</string>
+    <string name="welcome_text">Welcome To DigiCount</string>
     <string name="load_counter">Get Started!</string>
     <string name="counter_name_text">name of counter</string>
     <string name="create_counter">Create</string>
     <string name="cancel_text">Cancel</string>
-    <string name="title_activity_counter_list">CounterListActivity</string>
+    <string name="title_activity_counter_list">Select/Add a Counter</string>
     <string name="list_item">List Item</string>
-    <string name="intro_text">Keep track of your life!</string>
+    <string name="intro_text">The App You Can Count On It</string>
     <string name="list_count">count</string>
     <string name="counter_list_header_text">Tap a counter to load. Tap and hold to see more options</string>
     <string name="add_button_text">+</string>
     <string name="add_new_counter_text">Add New Counter Here:</string>
-    <string name="title_activity_count">activity counter</string>
-    <string name="title_activity_rename_counter">RenameCounterActivity</string>
+    <string name="title_activity_count">Start Counting!</string>
+    <string name="title_activity_rename_counter">Give the Counter a New Name</string>
     <string name="hello_world">Hello world!</string>
-    <string name="rename_text">enter new name for counter</string>
+    <string name="rename_title_text">OK, let\'s rename your Counter</string>
+    <string name="rename_text">enter new name here</string>
     <string name="submit_new_name">Submit</string>
     <string name="title_activity_stats">StatsActivity</string>
     <string name="counts_per_hour_title">Per Hour</string>
     <string name="counts_per_day_title">Per Day</string>
     <string name="counts_per_week_title">Per Week</string>
     <string name="counts_per_month_title">Per Month</string>
-    <string name="title_activity_blah">Blah</string>
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
+    <string name="cancel_text_view">Changed Your Mind?</string>
 
 </resources>

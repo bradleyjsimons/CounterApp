@@ -7,14 +7,6 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".CounterActivity" >
-    
-    <TextView
-        android:id="@+id/welcomeLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/welcome_text"
-        android:textSize="35sp" />
 
     <Button
         android:id="@+id/loadCounter"
@@ -29,24 +21,24 @@
         android:textSize="25sp" />
 
     <TextView
+        android:id="@+id/welcomeLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"
+        android:gravity="center"
+        android:text="@string/welcome_text"
+        android:textSize="40sp" />
+
+    <TextView
         android:id="@+id/intro_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/welcomeLabel"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="56dp"
+        android:layout_centerVertical="true"
         android:gravity="center"
         android:text="@string/intro_text"
-        android:textSize="20sp" />
-
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/intro_text"
-        android:layout_below="@+id/intro_text"
-        android:layout_marginRight="59dp"
-        android:layout_marginTop="78dp"
-        android:src="@drawable/digi_counter_logo" />
+        android:textSize="25sp" />
         
 </RelativeLayout>

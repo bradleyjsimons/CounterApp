@@ -8,36 +8,57 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".RenameCounterActivity" >
 
-    <EditText
-        android:id="@+id/rename_edit_text"
+    <TextView
+        android:id="@+id/cancel_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="109dp"
-        android:ems="10"
-        android:gravity="center"
-        android:hint="@string/rename_text" />
-
-    <Button
-        android:id="@+id/submit_rename_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/rename_edit_text"
-        android:layout_alignRight="@+id/rename_edit_text"
-        android:layout_centerVertical="true"
-        android:onClick="submitRename"
-        android:text="@string/submit_new_name" />
+        android:layout_above="@+id/cancel_rename_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="14dp"
+        android:text="@string/cancel_text_view" />
 
     <Button
         android:id="@+id/cancel_rename_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/submit_rename_button"
-        android:layout_alignRight="@+id/submit_rename_button"
-        android:layout_below="@+id/submit_rename_button"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/rename_edit_text"
         android:onClick="cancelRename"
         android:text="@string/cancel_text" />
+
+    <Button
+        android:id="@+id/submit_rename_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignRight="@+id/rename_edit_text"
+        android:layout_centerVertical="true"
+        android:onClick="submitRename"
+        android:text="@string/submit_new_name" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="@string/rename_title_text"
+        android:textSize="25sp" />
+
+    <EditText
+        android:id="@+id/rename_edit_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/submit_rename_button"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignParentRight="true"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/rename_text" >
+
+        <requestFocus />
+    </EditText>
 
 </RelativeLayout>

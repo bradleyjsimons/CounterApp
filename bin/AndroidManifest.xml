@@ -14,49 +14,44 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.counter.MainActivity"
+            android:name="com.digicount.counter.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.counter.CounterActivity"
+            android:name="com.digicount.counter.CounterActivity"
             android:label="@string/title_activity_count"
-            android:parentActivityName="com.example.counter.CounterListActivity" >
+            android:parentActivityName="com.digicount.counter.CounterListActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.counter.MainActivity" />
         </activity>
         <activity
-            android:name="com.example.counter.CounterListActivity"
+            android:name="com.digicount.counter.CounterListActivity"
             android:label="@string/title_activity_counter_list"
-            android:parentActivityName="com.example.counter.MainActivity" >
+            android:parentActivityName="com.digicount.counter.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="android.app.ListActivity" />
         </activity>
         <activity
-            android:name="com.example.counter.RenameCounterActivity"
+            android:name="com.digicount.counter.RenameCounterActivity"
             android:label="@string/title_activity_rename_counter"
-            android:parentActivityName="com.example.counter.CounterListActivity" >
+            android:parentActivityName="com.digicount.counter.CounterListActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="android.app.ListActivity" />
         </activity>
         <activity
-            android:name="com.example.counter.StatsActivity"
+            android:name="com.digicount.counter.StatsActivity"
             android:label="@string/title_activity_stats"
-            android:parentActivityName="com.example.counter.CounterListActivity" >
+            android:parentActivityName="com.digicount.counter.CounterListActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.counter.CounterListActivity" />
-        </activity>
-        <activity
-            android:name="com.example.counter.Blah"
-            android:label="@string/title_activity_blah" >
         </activity>
     </application>
 
