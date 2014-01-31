@@ -283,7 +283,7 @@ public class CounterStatsModel implements Serializable {
 	public ArrayList<String> getDayStrings() {
 		ArrayList<String> dayStrings = new ArrayList<String>();
 		for (Date date : dateList) {
-			int count = this.getCountsInSpecifiedMonth(date);
+			int count = this.getCountsInSpecifiedDay(date);
 
 			Calendar calendar = Calendar.getInstance();
 			calendar.setTime(date);
@@ -319,7 +319,7 @@ public class CounterStatsModel implements Serializable {
 	public ArrayList<String> getWeekStrings() {
 		ArrayList<String> weekStrings = new ArrayList<String>();
 		for (Date date : dateList) {
-			int count = this.getCountsInSpecifiedMonth(date);
+			int count = this.getCountsInSpecifiedWeek(date);
 			Calendar calendar = Calendar.getInstance();
 			calendar.setTime(date);
 
